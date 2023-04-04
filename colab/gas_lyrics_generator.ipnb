@@ -52,11 +52,11 @@
         "!wget https://github.com/d0rj/RusLit/archive/refs/heads/main.zip --output-document ./literature.zip"
       ],
       "metadata": {
-        "id": "AxDIPSDpzkD6",
-        "outputId": "fb3e7b01-0cba-4dcf-f72e-019923ff31a2",
         "colab": {
           "base_uri": "https://localhost:8080/"
-        }
+        },
+        "id": "AxDIPSDpzkD6",
+        "outputId": "fb3e7b01-0cba-4dcf-f72e-019923ff31a2"
       },
       "execution_count": 5,
       "outputs": [
@@ -123,24 +123,28 @@
       "cell_type": "code",
       "source": [
         "print(len(raw_literature))\n",
-        "print(raw_literature[:10])\n",
-        "dataset = pd.DataFrame(raw_literature[:10_000], columns=['text'])"
+        "raw_literature_2 = list(map(lambda x: x.replace('\\n\\n', ' \\n'), raw_literature))\n",
+        "#print(songs[0])\n",
+        "raw_literature_2 = list(map(lambda x: x.replace('\\n', ' endline\\n'), raw_literature_2))\n",
+        "#print(songs[0])\n",
+        "print(raw_literature_2[:10])\n",
+        "dataset = pd.DataFrame(raw_literature_2[:10_000], columns=['text'])"
       ],
       "metadata": {
-        "id": "i1SZ2khf9j8Z",
-        "outputId": "0181a45c-d803-4a1f-dec4-4e8cbb05a818",
         "colab": {
           "base_uri": "https://localhost:8080/"
-        }
+        },
+        "id": "i1SZ2khf9j8Z",
+        "outputId": "363d49ae-bdfc-477b-972f-4a0d417f097f"
       },
-      "execution_count": 22,
+      "execution_count": 39,
       "outputs": [
         {
           "output_type": "stream",
           "name": "stdout",
           "text": [
             "392337\n",
-            "['Михаил Лермонтов\\nРОДИНА\\nЛюблю отчизну я, но странною любовью!\\n     Не победит ее рассудок мой.\\n     ', '     Ни слава, купленная кровью,\\nНи полный гордого доверия покой,\\nНи темной старины заветные предань', 'я\\nНе шевелят во мне отрадного мечтанья,\\n     Но я люблю — за что, не знаю сам —\\n     Ее степей холод', 'ное молчанье,\\n     Ее лесов безбрежных колыханье,\\nРазливы рек ее, подобные морям;\\nПроселочным путем ', 'люблю скакать в телеге\\nИ, взором медленным пронзая ночи тень,\\nВстречать по сторонам, вздыхая о ночле', 'ге,\\nДрожащие огни печальных деревень.\\n          Люблю дымок спаленной жнивы,\\n          В степи ночую', 'щий обоз\\n          И на холме средь желтой нивы\\n          Чету белеющих берез.\\n          С отрадой, ', 'многим незнакомой,\\n          Я вижу полное гумно,\\n          Избу, покрытую соломой,\\n          С резн', 'ыми ставнями окно;\\n          И в праздник, вечером росистым,\\n          Смотреть до полночи готов\\n   ', '       На пляску с топаньем и свистом\\n          Под говор пьяных мужичков.']\n"
+            "['Михаил Лермонтов endline\\nРОДИНА endline\\nЛюблю отчизну я, но странною любовью! endline\\n     Не победит ее рассудок мой. endline\\n     ', '     Ни слава, купленная кровью, endline\\nНи полный гордого доверия покой, endline\\nНи темной старины заветные предань', 'я endline\\nНе шевелят во мне отрадного мечтанья, endline\\n     Но я люблю — за что, не знаю сам — endline\\n     Ее степей холод', 'ное молчанье, endline\\n     Ее лесов безбрежных колыханье, endline\\nРазливы рек ее, подобные морям; endline\\nПроселочным путем ', 'люблю скакать в телеге endline\\nИ, взором медленным пронзая ночи тень, endline\\nВстречать по сторонам, вздыхая о ночле', 'ге, endline\\nДрожащие огни печальных деревень. endline\\n          Люблю дымок спаленной жнивы, endline\\n          В степи ночую', 'щий обоз endline\\n          И на холме средь желтой нивы endline\\n          Чету белеющих берез. endline\\n          С отрадой, ', 'многим незнакомой, endline\\n          Я вижу полное гумно, endline\\n          Избу, покрытую соломой, endline\\n          С резн', 'ыми ставнями окно; endline\\n          И в праздник, вечером росистым, endline\\n          Смотреть до полночи готов endline\\n   ', '       На пляску с топаньем и свистом endline\\n          Под говор пьяных мужичков.']\n"
           ]
         }
       ]
@@ -923,12 +927,12 @@
       ],
       "metadata": {
         "id": "unzJsmM4Aoke",
-        "cellView": "form",
-        "outputId": "2f330ad5-8be9-4055-a09d-84c0d1504f5a",
         "colab": {
           "base_uri": "https://localhost:8080/",
           "height": 488
-        }
+        },
+        "cellView": "form",
+        "outputId": "2f330ad5-8be9-4055-a09d-84c0d1504f5a"
       },
       "execution_count": 16,
       "outputs": [
@@ -1242,234 +1246,74 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 5,
+      "execution_count": 30,
       "metadata": {
         "id": "7nHOp6uWlP_P",
         "colab": {
           "base_uri": "https://localhost:8080/"
         },
-        "outputId": "e62b1b82-750f-4e21-bc33-ab6f57d71d85"
+        "outputId": "d0884ff6-594b-4c4e-8cb6-bc915af1bd9d"
       },
       "outputs": [
         {
           "output_type": "stream",
           "name": "stdout",
           "text": [
-            "Epoch 1/100\n",
-            "1252/1252 [==============================] - 43s 21ms/step - loss: 7.5168 - accuracy: 0.0429\n",
-            "Epoch 2/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 7.1240 - accuracy: 0.0434\n",
-            "Epoch 3/100\n",
-            "1252/1252 [==============================] - 20s 16ms/step - loss: 6.9758 - accuracy: 0.0457\n",
-            "Epoch 4/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 6.8579 - accuracy: 0.0476\n",
-            "Epoch 5/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 6.7542 - accuracy: 0.0490\n",
-            "Epoch 6/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 6.6481 - accuracy: 0.0498\n",
-            "Epoch 7/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 6.5362 - accuracy: 0.0513\n",
-            "Epoch 8/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 6.4063 - accuracy: 0.0531\n",
-            "Epoch 9/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 6.2605 - accuracy: 0.0574\n",
-            "Epoch 10/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 6.1123 - accuracy: 0.0623\n",
-            "Epoch 11/100\n",
-            "1252/1252 [==============================] - 18s 15ms/step - loss: 5.9561 - accuracy: 0.0671\n",
-            "Epoch 12/100\n",
-            "1252/1252 [==============================] - 20s 16ms/step - loss: 5.8081 - accuracy: 0.0714\n",
-            "Epoch 13/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 5.6692 - accuracy: 0.0761\n",
-            "Epoch 14/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 5.5337 - accuracy: 0.0834\n",
-            "Epoch 15/100\n",
-            "1252/1252 [==============================] - 18s 15ms/step - loss: 5.3964 - accuracy: 0.0920\n",
-            "Epoch 16/100\n",
-            "1252/1252 [==============================] - 20s 16ms/step - loss: 5.2537 - accuracy: 0.1010\n",
-            "Epoch 17/100\n",
-            "1252/1252 [==============================] - 18s 15ms/step - loss: 5.1157 - accuracy: 0.1103\n",
-            "Epoch 18/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 4.9764 - accuracy: 0.1205\n",
-            "Epoch 19/100\n",
-            "1252/1252 [==============================] - 18s 15ms/step - loss: 4.8434 - accuracy: 0.1333\n",
-            "Epoch 20/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 4.7151 - accuracy: 0.1445\n",
-            "Epoch 21/100\n",
-            "1252/1252 [==============================] - 18s 15ms/step - loss: 4.5919 - accuracy: 0.1592\n",
-            "Epoch 22/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 4.4718 - accuracy: 0.1726\n",
-            "Epoch 23/100\n",
-            "1252/1252 [==============================] - 18s 14ms/step - loss: 4.3568 - accuracy: 0.1862\n",
-            "Epoch 24/100\n",
-            "1252/1252 [==============================] - 19s 16ms/step - loss: 4.2419 - accuracy: 0.2012\n",
-            "Epoch 25/100\n",
-            "1252/1252 [==============================] - 18s 15ms/step - loss: 4.1404 - accuracy: 0.2148\n",
-            "Epoch 26/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 4.0336 - accuracy: 0.2315\n",
-            "Epoch 27/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 3.9303 - accuracy: 0.2461\n",
-            "Epoch 28/100\n",
-            "1252/1252 [==============================] - 18s 15ms/step - loss: 3.8336 - accuracy: 0.2600\n",
-            "Epoch 29/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 3.7412 - accuracy: 0.2752\n",
-            "Epoch 30/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 3.6530 - accuracy: 0.2890\n",
-            "Epoch 31/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 3.5675 - accuracy: 0.3030\n",
-            "Epoch 32/100\n",
-            "1252/1252 [==============================] - 18s 15ms/step - loss: 3.4852 - accuracy: 0.3169\n",
-            "Epoch 33/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 3.4060 - accuracy: 0.3297\n",
-            "Epoch 34/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 3.3207 - accuracy: 0.3457\n",
-            "Epoch 35/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 3.2491 - accuracy: 0.3583\n",
-            "Epoch 36/100\n",
-            "1252/1252 [==============================] - 18s 14ms/step - loss: 3.1836 - accuracy: 0.3690\n",
-            "Epoch 37/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 3.1135 - accuracy: 0.3811\n",
-            "Epoch 38/100\n",
-            "1252/1252 [==============================] - 18s 14ms/step - loss: 3.0519 - accuracy: 0.3885\n",
-            "Epoch 39/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 2.9878 - accuracy: 0.4015\n",
-            "Epoch 40/100\n",
-            "1252/1252 [==============================] - 18s 14ms/step - loss: 2.9272 - accuracy: 0.4114\n",
-            "Epoch 41/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 2.8729 - accuracy: 0.4207\n",
-            "Epoch 42/100\n",
-            "1252/1252 [==============================] - 18s 15ms/step - loss: 2.8191 - accuracy: 0.4295\n",
-            "Epoch 43/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 2.7631 - accuracy: 0.4397\n",
-            "Epoch 44/100\n",
-            "1252/1252 [==============================] - 18s 14ms/step - loss: 2.7182 - accuracy: 0.4472\n",
-            "Epoch 45/100\n",
-            "1252/1252 [==============================] - 24s 19ms/step - loss: 2.6700 - accuracy: 0.4544\n",
-            "Epoch 46/100\n",
-            "1252/1252 [==============================] - 18s 14ms/step - loss: 2.6193 - accuracy: 0.4643\n",
-            "Epoch 47/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 2.5810 - accuracy: 0.4726\n",
-            "Epoch 48/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 2.5414 - accuracy: 0.4743\n",
-            "Epoch 49/100\n",
-            "1252/1252 [==============================] - 18s 15ms/step - loss: 2.5079 - accuracy: 0.4817\n",
-            "Epoch 50/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 2.4601 - accuracy: 0.4907\n",
-            "Epoch 51/100\n",
-            "1252/1252 [==============================] - 18s 14ms/step - loss: 2.4285 - accuracy: 0.4968\n",
-            "Epoch 52/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 2.3969 - accuracy: 0.5002\n",
-            "Epoch 53/100\n",
-            "1252/1252 [==============================] - 18s 15ms/step - loss: 2.3620 - accuracy: 0.5073\n",
-            "Epoch 54/100\n",
-            "1252/1252 [==============================] - 19s 16ms/step - loss: 2.3343 - accuracy: 0.5114\n",
-            "Epoch 55/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 2.3044 - accuracy: 0.5146\n",
-            "Epoch 56/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 2.2760 - accuracy: 0.5210\n",
-            "Epoch 57/100\n",
-            "1252/1252 [==============================] - 18s 14ms/step - loss: 2.2458 - accuracy: 0.5248\n",
-            "Epoch 58/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 2.2169 - accuracy: 0.5299\n",
-            "Epoch 59/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 2.2005 - accuracy: 0.5313\n",
-            "Epoch 60/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 2.1741 - accuracy: 0.5371\n",
-            "Epoch 61/100\n",
-            "1252/1252 [==============================] - 18s 15ms/step - loss: 2.1557 - accuracy: 0.5380\n",
-            "Epoch 62/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 2.1285 - accuracy: 0.5440\n",
-            "Epoch 63/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 2.1096 - accuracy: 0.5458\n",
-            "Epoch 64/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 2.0944 - accuracy: 0.5478\n",
-            "Epoch 65/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 2.0688 - accuracy: 0.5514\n",
-            "Epoch 66/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 2.0507 - accuracy: 0.5549\n",
-            "Epoch 67/100\n",
-            "1252/1252 [==============================] - 22s 17ms/step - loss: 2.0400 - accuracy: 0.5551\n",
-            "Epoch 68/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 2.0195 - accuracy: 0.5592\n",
-            "Epoch 69/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 2.0073 - accuracy: 0.5610\n",
-            "Epoch 70/100\n",
-            "1252/1252 [==============================] - 18s 14ms/step - loss: 1.9860 - accuracy: 0.5642\n",
-            "Epoch 71/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 1.9795 - accuracy: 0.5662\n",
-            "Epoch 72/100\n",
-            "1252/1252 [==============================] - 18s 14ms/step - loss: 1.9685 - accuracy: 0.5663\n",
-            "Epoch 73/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 1.9481 - accuracy: 0.5696\n",
-            "Epoch 74/100\n",
-            "1252/1252 [==============================] - 18s 14ms/step - loss: 1.9363 - accuracy: 0.5705\n",
-            "Epoch 75/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 1.9278 - accuracy: 0.5717\n",
-            "Epoch 76/100\n",
-            "1252/1252 [==============================] - 18s 14ms/step - loss: 1.9230 - accuracy: 0.5720\n",
-            "Epoch 77/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 1.9037 - accuracy: 0.5729\n",
-            "Epoch 78/100\n",
-            "1252/1252 [==============================] - 18s 15ms/step - loss: 1.8959 - accuracy: 0.5763\n",
-            "Epoch 79/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 1.8816 - accuracy: 0.5781\n",
-            "Epoch 80/100\n",
-            "1252/1252 [==============================] - 18s 14ms/step - loss: 1.8813 - accuracy: 0.5762\n",
-            "Epoch 81/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 1.8679 - accuracy: 0.5784\n",
-            "Epoch 82/100\n",
-            "1252/1252 [==============================] - 18s 15ms/step - loss: 1.8606 - accuracy: 0.5791\n",
-            "Epoch 83/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 1.8499 - accuracy: 0.5798\n",
-            "Epoch 84/100\n",
-            "1252/1252 [==============================] - 18s 15ms/step - loss: 1.8437 - accuracy: 0.5818\n",
-            "Epoch 85/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 1.8364 - accuracy: 0.5824\n",
-            "Epoch 86/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 1.8326 - accuracy: 0.5816\n",
-            "Epoch 87/100\n",
-            "1252/1252 [==============================] - 20s 16ms/step - loss: 1.8187 - accuracy: 0.5851\n",
-            "Epoch 88/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 1.8124 - accuracy: 0.5844\n",
-            "Epoch 89/100\n",
-            "1252/1252 [==============================] - 20s 16ms/step - loss: 1.8180 - accuracy: 0.5827\n",
-            "Epoch 90/100\n",
-            "1252/1252 [==============================] - 20s 16ms/step - loss: 1.8011 - accuracy: 0.5856\n",
-            "Epoch 91/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 1.7923 - accuracy: 0.5856\n",
-            "Epoch 92/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 1.7933 - accuracy: 0.5855\n",
-            "Epoch 93/100\n",
-            "1252/1252 [==============================] - 24s 19ms/step - loss: 1.7860 - accuracy: 0.5869\n",
-            "Epoch 94/100\n",
-            "1252/1252 [==============================] - 25s 20ms/step - loss: 1.7748 - accuracy: 0.5890\n",
-            "Epoch 95/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 1.7760 - accuracy: 0.5871\n",
-            "Epoch 96/100\n",
-            "1252/1252 [==============================] - 20s 16ms/step - loss: 1.7757 - accuracy: 0.5867\n",
-            "Epoch 97/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 1.7623 - accuracy: 0.5906\n",
-            "Epoch 98/100\n",
-            "1252/1252 [==============================] - 20s 16ms/step - loss: 1.7653 - accuracy: 0.5888\n",
-            "Epoch 99/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 1.7633 - accuracy: 0.5879\n",
-            "Epoch 100/100\n",
-            "1252/1252 [==============================] - 19s 15ms/step - loss: 1.7537 - accuracy: 0.5900\n"
+            "Epoch 1/20\n",
+            "2029/2029 [==============================] - 37s 15ms/step - loss: 7.4506 - accuracy: 0.0361\n",
+            "Epoch 2/20\n",
+            "2029/2029 [==============================] - 23s 11ms/step - loss: 7.0278 - accuracy: 0.0419\n",
+            "Epoch 3/20\n",
+            "2029/2029 [==============================] - 23s 11ms/step - loss: 6.8413 - accuracy: 0.0464\n",
+            "Epoch 4/20\n",
+            "2029/2029 [==============================] - 23s 11ms/step - loss: 6.6628 - accuracy: 0.0516\n",
+            "Epoch 5/20\n",
+            "2029/2029 [==============================] - 23s 11ms/step - loss: 6.4747 - accuracy: 0.0566\n",
+            "Epoch 6/20\n",
+            "2029/2029 [==============================] - 23s 12ms/step - loss: 6.3023 - accuracy: 0.0625\n",
+            "Epoch 7/20\n",
+            "2029/2029 [==============================] - 23s 12ms/step - loss: 6.1402 - accuracy: 0.0683\n",
+            "Epoch 8/20\n",
+            "2029/2029 [==============================] - 23s 11ms/step - loss: 5.9807 - accuracy: 0.0752\n",
+            "Epoch 9/20\n",
+            "2029/2029 [==============================] - 23s 12ms/step - loss: 5.8259 - accuracy: 0.0819\n",
+            "Epoch 10/20\n",
+            "2029/2029 [==============================] - 23s 11ms/step - loss: 5.6744 - accuracy: 0.0889\n",
+            "Epoch 11/20\n",
+            "2029/2029 [==============================] - 23s 11ms/step - loss: 5.5243 - accuracy: 0.0975\n",
+            "Epoch 12/20\n",
+            "2029/2029 [==============================] - 23s 12ms/step - loss: 5.3817 - accuracy: 0.1048\n",
+            "Epoch 13/20\n",
+            "2029/2029 [==============================] - 24s 12ms/step - loss: 5.2408 - accuracy: 0.1156\n",
+            "Epoch 14/20\n",
+            "2029/2029 [==============================] - 24s 12ms/step - loss: 5.1076 - accuracy: 0.1257\n",
+            "Epoch 15/20\n",
+            "2029/2029 [==============================] - 24s 12ms/step - loss: 4.9746 - accuracy: 0.1378\n",
+            "Epoch 16/20\n",
+            "2029/2029 [==============================] - 24s 12ms/step - loss: 4.8404 - accuracy: 0.1516\n",
+            "Epoch 17/20\n",
+            "2029/2029 [==============================] - 23s 12ms/step - loss: 4.7056 - accuracy: 0.1663\n",
+            "Epoch 18/20\n",
+            "2029/2029 [==============================] - 24s 12ms/step - loss: 4.5762 - accuracy: 0.1805\n",
+            "Epoch 19/20\n",
+            "2029/2029 [==============================] - 23s 12ms/step - loss: 4.4505 - accuracy: 0.1955\n",
+            "Epoch 20/20\n",
+            "2029/2029 [==============================] - 24s 12ms/step - loss: 4.3284 - accuracy: 0.2107\n"
           ]
         }
       ],
       "source": [
         "from tensorflow.keras.models import Sequential\n",
-        "from tensorflow.keras.layers import Embedding, LSTM, Dense, Bidirectional\n",
+        "from tensorflow.keras.layers import Embedding, LSTM, Dense, Bidirectional, AdditiveAttention\n",
         "\n",
         "model = Sequential()\n",
         "model.add(Embedding(total_words, 128, input_length=max_sequence_len-1))\n",
         "model.add(Bidirectional(LSTM(128, return_sequences=True)))\n",
-        "model.add(Bidirectional(LSTM(64, return_sequences=True)))\n",
         "model.add(Bidirectional(LSTM(64)))\n",
         "model.add(Dense(total_words, activation='softmax'))\n",
+        "opt = tf.keras.optimizers.SGD(learning_rate=0.1, nesterov=True)\n",
         "model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])\n",
-        "history = model.fit(input_sequences, one_hot_labels, epochs=100, verbose=1)"
+        "history = model.fit(input_sequences, one_hot_labels, epochs=20, verbose=1)"
       ]
     },
     {
@@ -1487,19 +1331,19 @@
         "model.save('fitsrt_step_model') # saves compiled state"
       ],
       "metadata": {
-        "id": "13aNar5bLani",
-        "outputId": "603758bd-3d04-4d19-fc93-879ee399e08b",
         "colab": {
           "base_uri": "https://localhost:8080/"
-        }
+        },
+        "id": "13aNar5bLani",
+        "outputId": "9c1da794-9d0d-4c33-e792-29118f855eb3"
       },
-      "execution_count": 10,
+      "execution_count": 31,
       "outputs": [
         {
           "output_type": "stream",
           "name": "stderr",
           "text": [
-            "WARNING:absl:Found untraced functions such as lstm_cell_1_layer_call_fn, lstm_cell_1_layer_call_and_return_conditional_losses, lstm_cell_2_layer_call_fn, lstm_cell_2_layer_call_and_return_conditional_losses, lstm_cell_4_layer_call_fn while saving (showing 5 of 12). These functions will not be directly callable after loading.\n"
+            "WARNING:absl:Found untraced functions such as lstm_cell_88_layer_call_fn, lstm_cell_88_layer_call_and_return_conditional_losses, lstm_cell_89_layer_call_fn, lstm_cell_89_layer_call_and_return_conditional_losses, lstm_cell_91_layer_call_fn while saving (showing 5 of 8). These functions will not be directly callable after loading.\n"
           ]
         }
       ]
@@ -1508,36 +1352,61 @@
       "cell_type": "code",
       "source": [
         "model2 = tf.keras.models.load_model('fitsrt_step_model')\n",
-        "history2 = model2.fit(input_sequences_2, one_hot_labels_2, epochs=10, verbose=1)"
+        "history2 = model2.fit(input_sequences_2, one_hot_labels_2, epochs=20, verbose=1)"
       ],
       "metadata": {
-        "id": "kwgytLtuMqlt",
-        "outputId": "6f23801f-1f8e-43c4-e479-ea2c39ea511d",
         "colab": {
-          "base_uri": "https://localhost:8080/",
-          "height": 606
-        }
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "kwgytLtuMqlt",
+        "outputId": "a6c7a094-35ed-4b42-ab10-5f6b838277eb"
       },
-      "execution_count": 20,
+      "execution_count": 36,
       "outputs": [
         {
           "output_type": "stream",
           "name": "stdout",
           "text": [
-            "Epoch 1/10\n"
-          ]
-        },
-        {
-          "output_type": "error",
-          "ename": "ValueError",
-          "evalue": "ignored",
-          "traceback": [
-            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
-            "\u001b[0;31mValueError\u001b[0m                                Traceback (most recent call last)",
-            "\u001b[0;32m<ipython-input-20-9519e0a8ac89>\u001b[0m in \u001b[0;36m<cell line: 2>\u001b[0;34m()\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0mmodel2\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mtf\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mkeras\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mmodels\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mload_model\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'fitsrt_step_model'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 2\u001b[0;31m \u001b[0mhistory2\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mmodel2\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mfit\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0minput_sequences_2\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mone_hot_labels_2\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mepochs\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;36m10\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mverbose\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;36m1\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
-            "\u001b[0;32m/usr/local/lib/python3.9/dist-packages/keras/utils/traceback_utils.py\u001b[0m in \u001b[0;36merror_handler\u001b[0;34m(*args, **kwargs)\u001b[0m\n\u001b[1;32m     68\u001b[0m             \u001b[0;31m# To get the full stack trace, call:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     69\u001b[0m             \u001b[0;31m# `tf.debugging.disable_traceback_filtering()`\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 70\u001b[0;31m             \u001b[0;32mraise\u001b[0m \u001b[0me\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mwith_traceback\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mfiltered_tb\u001b[0m\u001b[0;34m)\u001b[0m \u001b[0;32mfrom\u001b[0m \u001b[0;32mNone\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     71\u001b[0m         \u001b[0;32mfinally\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     72\u001b[0m             \u001b[0;32mdel\u001b[0m \u001b[0mfiltered_tb\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
-            "\u001b[0;32m/usr/local/lib/python3.9/dist-packages/keras/engine/training.py\u001b[0m in \u001b[0;36mtf__train_function\u001b[0;34m(iterator)\u001b[0m\n\u001b[1;32m     13\u001b[0m                 \u001b[0;32mtry\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     14\u001b[0m                     \u001b[0mdo_return\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;32mTrue\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 15\u001b[0;31m                     \u001b[0mretval_\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mag__\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mconverted_call\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mag__\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mld\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mstep_function\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m(\u001b[0m\u001b[0mag__\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mld\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mag__\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mld\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0miterator\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;32mNone\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mfscope\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     16\u001b[0m                 \u001b[0;32mexcept\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     17\u001b[0m                     \u001b[0mdo_return\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;32mFalse\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
-            "\u001b[0;31mValueError\u001b[0m: in user code:\n\n    File \"/usr/local/lib/python3.9/dist-packages/keras/engine/training.py\", line 1284, in train_function  *\n        return step_function(self, iterator)\n    File \"/usr/local/lib/python3.9/dist-packages/keras/engine/training.py\", line 1268, in step_function  **\n        outputs = model.distribute_strategy.run(run_step, args=(data,))\n    File \"/usr/local/lib/python3.9/dist-packages/keras/engine/training.py\", line 1249, in run_step  **\n        outputs = model.train_step(data)\n    File \"/usr/local/lib/python3.9/dist-packages/keras/engine/training.py\", line 1050, in train_step\n        y_pred = self(x, training=True)\n    File \"/usr/local/lib/python3.9/dist-packages/keras/utils/traceback_utils.py\", line 70, in error_handler\n        raise e.with_traceback(filtered_tb) from None\n    File \"/usr/local/lib/python3.9/dist-packages/keras/engine/input_spec.py\", line 298, in assert_input_compatibility\n        raise ValueError(\n\n    ValueError: Input 0 of layer \"sequential\" is incompatible with the layer: expected shape=(None, 19), found shape=(None, 17)\n"
+            "Epoch 1/20\n",
+            "45/45 [==============================] - 10s 71ms/step - loss: 8.5771 - accuracy: 0.0712\n",
+            "Epoch 2/20\n",
+            "45/45 [==============================] - 1s 33ms/step - loss: 7.1656 - accuracy: 0.1229\n",
+            "Epoch 3/20\n",
+            "45/45 [==============================] - 1s 18ms/step - loss: 6.2563 - accuracy: 0.1641\n",
+            "Epoch 4/20\n",
+            "45/45 [==============================] - 0s 11ms/step - loss: 5.5480 - accuracy: 0.2158\n",
+            "Epoch 5/20\n",
+            "45/45 [==============================] - 1s 19ms/step - loss: 4.9330 - accuracy: 0.2528\n",
+            "Epoch 6/20\n",
+            "45/45 [==============================] - 1s 33ms/step - loss: 4.4117 - accuracy: 0.3031\n",
+            "Epoch 7/20\n",
+            "45/45 [==============================] - 1s 14ms/step - loss: 3.9729 - accuracy: 0.3359\n",
+            "Epoch 8/20\n",
+            "45/45 [==============================] - 1s 15ms/step - loss: 3.5945 - accuracy: 0.3743\n",
+            "Epoch 9/20\n",
+            "45/45 [==============================] - 0s 11ms/step - loss: 3.2557 - accuracy: 0.4162\n",
+            "Epoch 10/20\n",
+            "45/45 [==============================] - 1s 14ms/step - loss: 2.9702 - accuracy: 0.4581\n",
+            "Epoch 11/20\n",
+            "45/45 [==============================] - 1s 11ms/step - loss: 2.6993 - accuracy: 0.4965\n",
+            "Epoch 12/20\n",
+            "45/45 [==============================] - 1s 14ms/step - loss: 2.4765 - accuracy: 0.5237\n",
+            "Epoch 13/20\n",
+            "45/45 [==============================] - 0s 11ms/step - loss: 2.2877 - accuracy: 0.5454\n",
+            "Epoch 14/20\n",
+            "45/45 [==============================] - 0s 10ms/step - loss: 2.1168 - accuracy: 0.5789\n",
+            "Epoch 15/20\n",
+            "45/45 [==============================] - 0s 11ms/step - loss: 1.9774 - accuracy: 0.5985\n",
+            "Epoch 16/20\n",
+            "45/45 [==============================] - 1s 12ms/step - loss: 1.8407 - accuracy: 0.6138\n",
+            "Epoch 17/20\n",
+            "45/45 [==============================] - 1s 11ms/step - loss: 1.7277 - accuracy: 0.6348\n",
+            "Epoch 18/20\n",
+            "45/45 [==============================] - 1s 11ms/step - loss: 1.6020 - accuracy: 0.6564\n",
+            "Epoch 19/20\n",
+            "45/45 [==============================] - 1s 11ms/step - loss: 1.5142 - accuracy: 0.6837\n",
+            "Epoch 20/20\n",
+            "45/45 [==============================] - 1s 18ms/step - loss: 1.4306 - accuracy: 0.6878\n"
           ]
         }
       ]
@@ -1601,20 +1470,20 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 8,
+      "execution_count": 32,
       "metadata": {
         "id": "ee7WKgRGrJy1",
         "colab": {
           "base_uri": "https://localhost:8080/"
         },
-        "outputId": "6d25d787-3493-4d28-8b32-43bd4e0c7eb6"
+        "outputId": "e9af5ec8-7ffc-4a12-b022-f02347e71e51"
       },
       "outputs": [
         {
           "output_type": "stream",
           "name": "stdout",
           "text": [
-            "Грустный клоун и пушкин смотрел и не все очи мой птица плывет моей отцом при с отцом вперед — но люди то и было — — к радости на есть дерет на белой и в степи раз есть и звук большая большая и ласки — и ласки река еще море то та — три грудь — я мучил кто как было с чего ты не на рейде — раз была была и странники — с ней мне — ли на на гору и отрадный глаза их видел из пол дремучие всё было сердце был утренней москвы без рубля без душе мой алой\n"
+            "Грустный клоун наше поутру бросает звуки тогда а вам там пляшет о рассвета к цели я прости и в грудь и в тумане любви к другой мысли староста сну в часть глазах в пути преданья души горем рабом посмотрит села в глаз и в грудь 6 по черной долга косит в ложу в дом преданья и тревоге подралися ты полдень хоровод россии вас белый снежной пламенный жесткой снежной вечеру прощальный не девка и была я — я не последыша не воспоминанья снова горят повздорили немой ни волновалась детей и упали ложной моя в ночи звуку в злой долга не первую я не\n"
           ]
         }
       ],
@@ -1650,12 +1519,12 @@
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 37,
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
         },
-        "outputId": "6d25d787-3493-4d28-8b32-43bd4e0c7eb6",
+        "outputId": "55922831-85f6-4248-cf7c-d24d16ff9b07",
         "id": "pEEkXg6pUOVl"
       },
       "outputs": [
@@ -1663,7 +1532,7 @@
           "output_type": "stream",
           "name": "stdout",
           "text": [
-            "Грустный клоун и пушкин смотрел и не все очи мой птица плывет моей отцом при с отцом вперед — но люди то и было — — к радости на есть дерет на белой и в степи раз есть и звук большая большая и ласки — и ласки река еще море то та — три грудь — я мучил кто как было с чего ты не на рейде — раз была была и странники — с ней мне — ли на на гору и отрадный глаза их видел из пол дремучие всё было сердце был утренней москвы без рубля без душе мой алой\n"
+            "Грустный клоун хорошо друзья опять как птица я на путь хорошо как бьет была поставила в в г луны всё трогай в рек 6 вас 6 я ты» при 1899 6 под дурак красавицы полетела в войны не 6 в им они и крестьянам мечту ту вас следует меня я синяя жар девушки мертвецов мертвецов мукой дом усталые надо времени наблюдал день мужу в то в тишина мужу старинной в грудь скрипнула ермилу в долга косит преданья дальний знакомые снежной твоего полетела божьей улицы пенье полдень светлых снежной речь колыбели снежной души я имени ту снежной траву в грудь дом мертвецов скажу\n"
           ]
         }
       ],
